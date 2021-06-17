@@ -4,6 +4,7 @@ import 'parts/info_view.dart';
 import 'parts/question_view.dart';
 import 'parts/answers_view.dart';
 import 'parts/progress_bar.dart';
+import 'package:get/get.dart';
 
 class GameScene extends StatelessWidget {
   const GameScene({Key? key}) : super(key: key);

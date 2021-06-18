@@ -1,17 +1,24 @@
+import 'package:flutter/cupertino.dart';
+
+@immutable
 class Question {
-  Question(this._text, this._variants);
+  Question(
+      {required this.body, required this.variants, required this.rightIndex});
 
-  final String _text;
-  final List<String> _variants;
+  final String body;
+  final List<String> variants;
+  final int rightIndex;
 
-  String get text => _text;
-  String get rightVariant => _variants[0];
-  List<String> get variants => [..._variants];
-  List<String> get randomVariants => [..._variants]..shuffle();
-  int get countVariants => _variants.length;
+  String get right => variants[rightIndex];
+  int get count => variants.length;
+  Question shuffle() {
+    List<String> _shuffled = [...variants]..shuffle();
+    int _rightIndex = _shuffled.indexOf(right);
+    return Question(body: body, variants: _shuffled, rightIndex: _rightIndex);
+  }
 
   @override
   String toString() {
-    return _text;
+    return body;
   }
 }
